@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>To My Favorite Human ❤️</title>
+  <meta name="description" content="A little corner of the internet made just for my favorite human. An interactive story and gift." />
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Background Canvas for Stars & Fireflies -->
+  <canvas id="stars-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-glow-orb orb-1" aria-hidden="true"></div>
+  <div class="ambient-glow-orb orb-2" aria-hidden="true"></div>
+
+  <!-- ──────────────────────────────────────────────────────────────────────────
+       STAGE 0: CINEMATIC OPENING SCREEN
+       ────────────────────────────────────────────────────────────────────────── -->
+  <div id="cinematic-intro-overlay" role="dialog" aria-modal="true" aria-label="Welcome screen">
+    <div class="intro-content-box">
+      <h1 class="intro-text-line" id="intro-line-1">Hey you... 👀</h1>
+      <h2 class="intro-text-line" id="intro-line-2">Yes, YOU.</h2>
+      <p class="intro-text-line" id="intro-line-3">I made something for you.</p>
+      
+      <div class="intro-btn-wrapper">
+        <button id="intro-enter-btn" class="glow-action-btn">
+          <span class="btn-label">Enter My Little Universe ✨</span>
+        </button>
+      </div>
+
+      <p class="intro-warning" id="intro-warning-text">Warning: You may accidentally smile a lot.</p>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────────────────────────────
+       STAGE 1: MAIN INTERACTIVE WEBSITE
+       ────────────────────────────────────────────────────────────────────────── -->
+  <div id="main-website-wrapper">
+
+    <!-- FLOATING NAVIGATION BAR -->
+    <header>
+      <nav id="floating-navbar" aria-label="Main Navigation">
+        <div class="nav-container">
+          <a href="#home-hero" class="nav-brand">
+            <span>To My Favorite Human</span> <span style="color: var(--blush-300);">❤️</span>
+          </a>
+
+          <!-- Desktop Navigation Links -->
+          <ul class="nav-links-desktop">
+            <li><a href="#home-hero" class="nav-link active">Home</a></li>
+            <li><a href="#our-story" class="nav-link">Our Story</a></li>
+            <li><a href="#why-youre-special" class="nav-link">Why You're Special</a></li>
+            <li><a href="#memories" class="nav-link">Memories</a></li>
+            <li><a href="#games" class="nav-link">Games</a></li>
+            <li><a href="#open-when" class="nav-link">Open When...</a></li>
+            <li><a href="#letter" class="nav-link">A Letter</a></li>
+            <li><a href="#final-surprise-section" class="nav-link" style="color: var(--blush-300); font-weight: 600;">Surprise ❤️</a></li>
+          </ul>
+
+          <div class="nav-right-actions">
+            <!-- Secrets Easter Egg Tracker Badge -->
+            <div class="secrets-nav-badge" title="Secrets discovered across the page">
+              <span>🕵️</span>
+              <span id="secrets-badge-count">0/6</span>
+            </div>
+
+            <!-- Quick Audio Play Toggle -->
+            <button id="floating-music-btn" class="nav-music-toggle-btn" aria-label="Toggle Background Music">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+              </svg>
+            </button>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button id="mobile-menu-toggle" class="mobile-hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Mobile Navigation Drawer -->
+      <div id="nav-drawer" class="mobile-nav-drawer" aria-label="Mobile Navigation Drawer">
+        <ul class="drawer-links-list">
+          <li><a href="#home-hero" class="drawer-link">Home</a></li>
+          <li><a href="#our-story" class="drawer-link">Our Story</a></li>
+          <li><a href="#why-youre-special" class="drawer-link">Why You're Special</a></li>
+          <li><a href="#memories" class="drawer-link">Memories</a></li>
+          <li><a href="#memory-capsule" class="drawer-link">Memory Capsule ✨</a></li>
+          <li><a href="#awards" class="drawer-link">Best Friend Awards</a></li>
+          <li><a href="#games" class="drawer-link">Games Hub</a></li>
+          <li><a href="#open-when" class="drawer-link">Open When...</a></li>
+          <li><a href="#letter" class="drawer-link">The Letter</a></li>
+          <li><a href="#inside-jokes" class="drawer-link">Our Inside Jokes</a></li>
+          <li><a href="#soundtrack" class="drawer-link">Soundtrack 🎧</a></li>
+          <li><a href="#photo-spotlight" class="drawer-link">Photo Message</a></li>
+          <li><a href="#compliment-generator" class="drawer-link">"You Are..." Generator</a></li>
+          <li><a href="#final-surprise-section" class="drawer-link" style="color: var(--blush-300); font-weight: 700;">Final Surprise ❤️</a></li>
+        </ul>
+        <div style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding-top: 1rem;">
+          Made with ❤️ for my best friend
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main>
+      <section id="home-hero">
+        <div class="container hero-content">
+          <div class="hero-pill-badge">
+            <span>✨</span>
+            <span>A little corner of the internet made just for you</span>
+          </div>
+
+          <h1 class="hero-title">To My Favorite Human ❤️</h1>
+          <p class="hero-subtitle">
+            An interactive walk through our memories, inside jokes, and the millions of reasons 
+            why life is infinitely brighter with you in it.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#our-story" class="glow-action-btn visible" style="text-decoration: none;">
+              <span>Begin Our Story 📖</span>
+            </a>
+            <a href="#games" class="btn-secondary">
+              <span>Play Games 🎮</span>
+            </a>
+          </div>
+
+          <!-- NEW FEATURE: DAILY REMINDER 🌷 -->
+          <div class="daily-reminder-card glass-card scroll-reveal" id="daily-reminder-card">
+            <div class="daily-reminder-header">
+              <span class="daily-reminder-icon">🌷</span>
+              <span class="daily-reminder-label">Today's reminder for you</span>
+              <button id="refresh-reminder-btn" class="refresh-pill-btn" aria-label="Get another reminder" title="Another gentle reminder">↻</button>
+            </div>
+            <p class="daily-reminder-text" id="daily-reminder-text">"You are deeply loved."</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 1: OUR STORY (TIMELINE) -->
+      <section id="our-story">
+        <div class="container">
+          <div class="section-header scroll-reveal">
+            <span class="section-tag">Chapter by Chapter</span>
+            <h2 class="section-title">
+              Our Story
+              <span id="secret-star-elem" class="hidden-easter-egg" title="A tiny celestial spark...">⭐</span>
+            </h2>
+            <p class="section-subtitle">
+              From two strangers crossing paths to an unbreakable bond. Scroll down to revisit our sweetest milestones.
+            </p>
+          </div>
+
+          <div class="timeline-track" id="story-timeline-container">
+            <!-- Dynamically populated from config.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: WHY YOU'RE SPECIAL -->
+      <section id="why-youre-special">
+        <div class="container">
+          <div class="section-header scroll-reveal">
+            <span class="section-tag">Reasons You're Amazing</span>
+            <h2 class="section-title">Why You're Truly One of a Kind</h2>
+            <p class="section-subtitle">
+              Click or tap any card to flip and reveal why you hold a permanent gold medal in my heart.
+            </p>
+          </div>
+
+          <div class="special-cards-grid" id="special-cards-grid">
+            <!-- Dynamically populated from config.js (12 cards) -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: MEMORIES -->
+      <section id="memories">
+        <div class="container">
+          <div class="section-header scroll-reveal">
+            <span class="section-tag">Polaroid Vault</span>
+            <h2 class="section-title">Moments Frozen In Time</h2>
+            <div class="memory-counter-badge" id="memory-counter-text">
+              Memories collected: 001 → ∞
+            </div>
+            <p class="section-subtitle">
+              The camera only captures pixels, but you and I know the feeling behind every single one.
+            </p>
+          </div>
+
+          <div class="memories-grid" id="memories-gallery-grid">
+            <!-- Dynamically populated from config.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- NEW FEATURE: MEMORY CAPSULE ✨ -->
+      <section id="memory-capsule">
+        <div class="container">
+          <div class="section-header scroll-reveal">
+            <span class="section-tag">Interactive Time Capsule</span>
+            <h2 class="section-title">
+              Memory Capsule ✨
+              <span id="secret-capsule-gem" class="hidden-easter-egg" title="A tiny time crystal...">💎</span>
+            </h2>
+            <p class="section-subtitle">
+              A digital time capsule for our favorite shared moments. Drop a memory here to save it forever on your device.
+            </p>
+          </div>
+
+          <div class="memory-capsule-card glass-card scroll-reveal">
+            <div class="capsule-form">
+              <label for="capsule-input-text" class="capsule-label">Drop a memory, milestone, or inside note:</label>
+              <div class="capsule-input-wrapper">
+                <textarea id="capsule-input-text" class="capsule-textarea" rows="3" placeholder="Remember that time when we... or I just want to remind you that..."></textarea>
+              </div>
+              <div class="capsule-actions">
+                <span class="capsule-hint">💡 Stored securely in your browser — no account or login needed.</span>
+                <button class="glow-action-btn visible" id="capsule-save-btn">
+                  <span>Seal in Capsule 💌</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="capsule-saved-section">
+              <div class="capsule-header-row">
+                <h4 class="capsule-subheading">Our Capsule Memories</h4>
+                <span id="capsule-count-badge" class="capsule-badge">0 memories saved</span>
+              </div>
+              <div class="capsule-memories-container" id="capsule-memories-list">
+                <!-- Dynamically populated from localStorage & config defaults -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: BEST FRIEND AWARDS 🏆 -->
+      <section id="awards">
+        <div class="container">
+          <div class="section-header scroll-reveal">
+            <span class="section-tag">Official Bestie Honors</span>
+            <h2 class="section-title">The Best Friend Awards 🏆</h2>
+            <p class="section-subtitle">
+              The Academy had no jurisdiction here, so I created an official committee to honor your legendary skills.
+            </p>
+          </div>
+
+          <div class="awards-grid" id="awards-grid">
+            <!-- Dynamically populated from config.js (9 awards) -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: GAMES HUB 🎮 -->
+      <section id="games">
+        <div class="container">
+          <div class="section-header scroll-reveal">
+            <span class="section-tag">Arcade & Fun</span>
+            <h2 class="section-title">Bestie Game Zone 🎮</h2>
+            <p class="section-subtitle">
+              Time to test our mental connection! Choose a game below and let's see how you do.
+            </p>
+          </div>
+
+          <div class="games-hub-wrapper">
+            <div class="games-tabs-bar" role="tablist">
+              <button class="game-tab-btn active" data-game="game-1" role="tab">1. How Well Do You Know Me? 🧠</button>
+              <button class="game-tab-btn" data-game="game-2" role="tab">2. How Well Do I Know You? 💡</button>
+              <button class="game-tab-btn" data-game="game-3" role="tab">3. Catch the Hearts ❤️</button>
+              <button class="game-tab-btn" data-game="game-4" role="tab">4. Memory Match 🎴</button>
+              <button class="game-tab-btn" data-game="game-5" role="tab">5. Choose Your Path 🗺️</button>
+            </div>
+
+            <!-- GAME 1 -->
+            <div class="game-panel active" id="game-1">
+              <div class="game-header-box">
+                <h3>How Well Do You Know Me?</h3>
+                <p>10 multiple-choice questions. Pick carefully—I'll be judging you lovingly!</p>
+              </div>
+
+              <div class="quiz-box" id="quiz1-question-view">
+                <div class="quiz-progress-track">
+                  <div class="quiz-progress-fill" id="quiz1-progress-bar"></div>
+                </div>
+                <span class="quiz-count-badge" id="quiz1-count-badge">Question 1 of 10</span>
+                <h4 class="quiz-question-title" id="quiz1-question-text">Loading question...</h4>
+
+                <div class="quiz-options-list" id="quiz1-options-container"></div>
+                <div class="quiz-explanation-box" id="quiz1-explanation"></div>
+              </div>
+
+              <div class="quiz-result-card" id="quiz1-result-view" style="display: none;">
+                <div class="quiz-result-score" id="quiz1-score-val">10 / 10</div>
+                <p class="quiz-result-message" id="quiz1-score-msg">WHO GAVE YOU ACCESS TO MY BRAIN?! 😭❤️</p>
+                <button class="glow-action-btn visible" id="quiz1-restart-btn">Play Again ↺</button>
+              </div>
+            </div>
+
+            <!-- GAME 2 -->
+            <div class="game-panel" id="game-2">
+              <div class="game-header-box">
+                <h3>How Well Do I Know You?</h3>
+                <p>Click on any flashcard to flip and reveal what I've learned about your adorable habits!</p>
+              </div>
+
+              <div class="flashcard-wrapper">
+                <div class="flashcard" id="quiz2-card">
+                  <div class="flashcard-face flashcard-front">
+                    <span class="env-tag" id="quiz2-count">Card 1 of 10</span>
+                    <h4 class="flashcard-q" id="quiz2-question">Loading question...</h4>
+                    <p class="card-tap-hint">Tap to flip & see my answer ✨</p>
+                  </div>
+                  <div class="flashcard-face flashcard-back">
+                    <span class="card-back-icon">💡</span>
+                    <p class="flashcard-ans" id="quiz2-answer">Loading answer...</p>
+                    <p class="flashcard-funny" id="quiz2-funny-note"></p>
+                    <span class="card-back-footer">Click to flip back</span>
+                  </div>
+                </div>
+
+                <div class="flashcard-nav">
+                  <button class="btn-secondary" id="quiz2-prev-btn">← Previous</button>
+                  <button class="glow-action-btn visible" id="quiz2-next-btn">Next Question →</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- GAME 3 -->
+            <div class="game-panel" id="game-3">
+              <div class="game-header-box">
+                <h3>Catch the Hearts ❤️</h3>
+                <p>Tap or click the falling hearts before the timer expires to build your high score!</p>
+              </div>
+
+              <div class="catch-hearts-container">
+                <div class="catch-hearts-hud">
+                  <div class="hud-stat">Score: <span class="hud-val" id="catch-score-val">0</span></div>
+                  <div class="hud-stat">Time: <span class="hud-val" id="catch-time-val">30s</span></div>
+                  <div class="hud-stat" id="catch-combo-val" style="color: var(--gold-glow);"></div>
+                </div>
+
+                <div id="catch-hearts-arena">
+                  <canvas id="catch-hearts-canvas"></canvas>
+
+                  <div class="catch-overlay-screen" id="catch-hearts-start-screen">
+                    <h4>Catch the Falling Hearts</h4>
+                    <p>Tap as many floating love bubbles as you can in 30 seconds!</p>
+                    <button class="glow-action-btn visible" id="catch-hearts-start-btn">Start Game 🚀</button>
+                  </div>
+
+                  <div class="catch-overlay-screen" id="catch-hearts-gameover-screen" style="display: none;">
+                    <h4>Time's Up! ⏱️</h4>
+                    <p id="catch-final-score">You collected 28 hearts.</p>
+                    <p id="catch-punchline" style="font-size: 1.2rem; color: var(--blush-300); font-family: var(--font-serif); margin-bottom: 2rem;">
+                      "But you still haven't collected all of mine. ❤️"
+                    </p>
+                    <button class="glow-action-btn visible" id="catch-hearts-replay-btn">Play Again ↺</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- GAME 4 -->
+            <div class="game-panel" id="game-4">
+              <div class="game-header-box">
+                <h3>Memory Match 🎴</h3>
+                <p>Find all matching symbol pairs. Let's see how sharp your bestie memory is!</p>
+              </div>
+
+              <div class="memory-game-wrap">
+                <div class="memory-hud">
+                  <span>Moves: <strong id="memory-moves-val" style="color: var(--lavender-300);">0</strong></span>
+                  <button class="btn-secondary" id="memory-restart-btn" style="padding: 0.4rem 1rem; font-size: 0.85rem;">Reset Deck ↻</button>
+                </div>
+
+                <div class="memory-grid" id="memory-grid"></div>
+
+                <div class="memory-victory-box" id="memory-victory-message">
+                  <h4>Bestie level unlocked 🔓❤️</h4>
+                  <p>Flawless memory! You hold the record for the most unstoppable best friend.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- GAME 5 -->
+            <div class="game-panel" id="game-5">
+              <div class="game-header-box">
+                <h3>Choose Your Path: The Mystery Adventure 🗺️</h3>
+                <p>An interactive branching narrative where your choices lead to a shocking conclusion!</p>
+              </div>
+
+              <div class="story-adventure-box glass-card">
+                <div class="story-narrative-text" id="story-narrative-text">Loading adventure...</div>
+                <div class="story-options-container" id="story-options-container"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: OPEN WHEN... (8 ENVELOPES) -->
+      <section id="open-when">
+        <div class="container">
+          <div class="section-header scroll-reveal">
+            <span class="section-tag">Emergency Love Letters</span>
+            <h2 class="section-title">Open When... 💌</h2>
+            <p class="section-subtitle">
+              For every high, low, and quiet in-between moment. Click any envelope whenever you need a virtual hug.
+            </p>
+          </div>
+
+          <div class="envelopes-grid" id="envelopes-grid"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: THE LETTER 💌 -->
+      <section id="letter">
+        <div class="container">
+          <div class="section-header scroll-reveal">
+            <span class="section-tag">From My Heart To Yours</span>
+            <h2 class="section-title">A Letter For You 💌</h2>
+            <p class="section-subtitle">
+              A few words that I don't say out loud often enough, but mean with every fiber of my being.
+            </p>
+          </div>
+
+          <article class="handwritten-letter-box">
+            <h3 class="letter-salutation" id="letter-salutation">Dear Best Friend,</h3>
+            <div class="letter-body" id="letter-content-body"></div>
+            <div class="letter-sign-off">
+              <p class="letter-closing-text" id="letter-closing">With all my love,</p>
+              <p class="letter-signature-text" id="letter-signature">Your Idiot Best Friend ❤️</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SECTION 8: OUR INSIDE JOKES WALL 😂 -->
+      <section id="inside-jokes">
+        <div class="container">
+          <div class="section-header scroll-reveal">
+            <span class="section-tag">Classified Humor</span>
+            <h2 class="section-title">
+              Our Inside Jokes 😂
+              <span id="secret-cat-elem" class="secret-cat-hidden" title="meow... what's this?">🐱</span>
+            </h2>
+            <p class="section-subtitle">
+              The sacred evidence of times we completely lost our composure and sanity together.
+            </p>
+          </div>
+
+          <div class="jokes-wall-grid" id="inside-jokes-wall"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 9: SOUNDTRACK & MUSIC MOMENT 🎵 -->
+      <section id="soundtrack">
+        <div class="container">
+          <div class="section-header scroll-reveal">
+            <span class="section-tag">Friendship Frequency</span>
+            <h2 class="section-title">Some memories need a soundtrack. 🎧</h2>
+            <p class="section-subtitle">
+              So here's one for ours.
+            </p>
+          </div>
+
+          <div class="soundtrack-wrapper">
+            <div class="music-player-card glass-card" id="main-music-player-card">
+              <!-- Animated Vinyl Disc & Visualizer -->
+              <div class="music-disc-box">
+                <div class="vinyl-disc" id="music-vinyl-disc"></div>
+                <div class="music-visualizer-bars" id="music-visualizer-bars" aria-hidden="true">
+                  <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+              </div>
+
+              <!-- Track Details & Audio Controls -->
+              <div class="music-details-box">
+                <div class="music-header-status">
+                  <span class="music-now-playing" id="music-now-playing-tag">Our Little Soundtrack 🎵</span>
+                  <span class="music-status-badge" id="now-playing-indicator" style="display: none;">
+                    <span class="pulse-dot"></span> Now Playing
+                  </span>
+                </div>
+                <h3 class="music-track-title" id="music-player-title">Main Koi Aisa Geet Gaoon</h3>
+                <p class="music-track-artist" id="music-player-artist">Abhijeet Bhattacharya, Alka Yagnik • Yes Boss</p>
+
+                <!-- Native High-Fidelity Audio Element -->
+                <audio id="friendship-native-audio" preload="auto">
+                  <source src="assets/audio/song.m4a" type="audio/mp4" />
+                  <source src="assets/audio/song.mp3" type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+
+                <div class="music-progress-wrapper">
+                  <div class="music-scrubber-track" id="music-progress-bar" role="slider" aria-label="Audio scrubber">
+                    <div class="music-scrubber-fill" id="music-progress-fill"></div>
+                  </div>
+                  <div class="music-timestamps">
+                    <span id="music-time-current">0:00</span>
+                    <span id="music-time-duration">5:34</span>
+                  </div>
+                </div>
+
+                <div class="music-controls-row">
+                  <div class="music-btn-group">
+                    <button class="music-circle-btn" id="music-prev-btn" aria-label="Restart track">⏮️</button>
+                    <button class="music-circle-btn music-play-btn-large" id="music-play-btn" aria-label="Play or pause music">
+                      <svg id="music-play-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                      </svg>
+                      <svg id="music-pause-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                        <rect x="6" y="4" width="4" height="16"/>
+                        <rect x="14" y="4" width="4" height="16"/>
+                      </svg>
+                    </button>
+                    <button class="music-circle-btn" id="music-next-btn" aria-label="Next track">⏭️</button>
+                  </div>
+
+                  <div class="music-volume-box">
+                    <span class="volume-icon" id="music-volume-icon" style="cursor: pointer;" title="Toggle mute">🔊</span>
+                    <input type="range" id="music-volume-slider" min="0" max="1" step="0.05" value="0.8" aria-label="Volume slider" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Emotional Prompt connected to the song -->
+            <div id="music-moment-prompt" class="music-moment-prompt scroll-reveal">
+              <p id="music-prompt-text" class="music-prompt-text">Press play when you're ready.</p>
+            </div>
+
+            <p class="soundtrack-note">
+              "Main Koi Aisa Geet Gaoon" — Abhijeet Bhattacharya, Alka Yagnik • Yes Boss
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: PHOTO SPOTLIGHT -->
+      <section id="photo-spotlight">
+        <div class="container spotlight-wrapper">
+          <div class="spotlight-photo-frame scroll-reveal">
+            <img id="spotlight-photo-img" src="assets/images/spotlight.svg" alt="Best Friend Spotlight Memory" loading="lazy" />
+          </div>
+
+          <blockquote class="spotlight-quote scroll-reveal">
+            <span id="spotlight-quote-text">
+              "If I could save every good memory we've ever had, I'd probably need unlimited storage<span id="secret-button-elem" class="secret-punctuation" title="Wait, why is this dot glowing?">.</span>"
+            </span>
+          </blockquote>
+          <p class="spotlight-subtext scroll-reveal" id="spotlight-subtext">
+            Some people make the world softer just by being in it.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 11: THE "YOU ARE..." GENERATOR -->
+      <section id="compliment-generator">
+        <div class="container generator-wrapper">
+          <div class="section-header scroll-reveal">
+            <span class="section-tag">Infinite Affirmations</span>
+            <h2 class="section-title">The "You Are..." Generator ✨</h2>
+            <p class="section-subtitle">
+              Need a little spark of truth on a dim afternoon? Click below and receive a reminder of your greatness.
+            </p>
+          </div>
+
+          <div class="compliment-card glass-card" id="compliment-display-card">
+            <p class="compliment-text" id="compliment-text-value">
+              "You are someone's safe place."
+            </p>
+          </div>
+
+          <button class="glow-action-btn visible" id="compliment-generator-btn">
+            <span>Tell me what I am ✨</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- SECTION 12: HIDDEN SURPRISES NOTICE -->
+      <section id="hidden-surprises" style="padding: 3rem 0; text-align: center;">
+        <div class="container">
+          <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(253, 224, 71, 0.08); border: 1px dashed rgba(253, 224, 71, 0.3); padding: 0.6rem 1.4rem; border-radius: 9999px;">
+            <span>🕵️</span>
+            <span style="font-size: 0.9rem; color: var(--gold-glow);">
+              Pssst... 6 hidden surprises are tucked across this site. Keep an eye out for glowing icons &amp; secret creatures!
+            </span>
+            <span id="secret-firefly-elem" class="hidden-easter-egg" style="font-size: 1.1rem; margin-left: 0.5rem;" title="Catch the firefly!">🪰</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 13: FINAL SURPRISE & GRAND FINALE -->
+      <section id="final-surprise-section">
+        <div class="container final-narrative-box">
+          <p class="final-lead-text scroll-reveal">And that's not even everything...</p>
+          <p class="final-lead-text scroll-reveal" style="font-style: italic; color: var(--text-muted);">
+            Because no website could ever explain how much you mean to me.
+          </p>
+          
+          <h2 class="final-family-callout scroll-reveal">
+            You're not just my best friend.<br />
+            You're family. ❤️
+          </h2>
+
+          <div style="margin-top: 2rem;">
+            <button class="glow-action-btn visible" id="final-one-last-thing-btn" style="font-size: 1.25rem; padding: 1.2rem 3rem;">
+              <span>One Last Thing... 🎁</span>
+            </button>
+          </div>
+
+          <div class="final-climax-box" id="final-climax-view">
+            <div class="climax-thanks-list">
+              <p class="climax-thanks-item">"Thank you for existing."</p>
+              <p class="climax-thanks-item">"Thank you for staying."</p>
+              <p class="climax-thanks-item" style="color: var(--blush-300); font-weight: 700;">"Thank you for being YOU."</p>
+            </div>
+
+            <div class="climax-toast-lines">
+              <p>Here's to all the memories we've made...</p>
+              <p>...and all the ones we haven't made yet. ❤️</p>
+            </div>
+
+            <button class="replay-btn" id="final-replay-btn">
+              Replay From The Beginning ↻
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container">
+        <p id="final-footer-text">
+          Made with way too much love, effort and probably questionable amounts of caffeine. ❤️
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- FLOATING COLLAPSIBLE MINI MUSIC WIDGET -->
+  <aside id="floating-music-widget" class="floating-music-widget glass-card" aria-label="Floating Soundtrack Player">
+    <div class="mini-player-header">
+      <div class="mini-player-title-box">
+        <span class="mini-music-icon" id="mini-music-icon">🎵</span>
+        <span class="mini-player-tag">Our Little Soundtrack</span>
+      </div>
+      <button id="mini-minimize-btn" class="mini-control-btn" aria-label="Minimize or Expand music player" title="Minimize/Maximize">
+        <span id="mini-toggle-icon">−</span>
+      </button>
+    </div>
+
+    <div class="mini-player-body" id="mini-player-body">
+      <div class="mini-track-info">
+        <span class="mini-song-name" id="mini-song-title">Main Koi Aisa Geet Gaoon</span>
+        <div class="mini-visualizer" id="mini-visualizer" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      
+      <div class="mini-progress-track" id="mini-progress-bar">
+        <div class="mini-progress-fill" id="mini-progress-fill"></div>
+      </div>
+
+      <div class="mini-controls-row">
+        <button id="mini-play-btn" class="mini-play-circle-btn" aria-label="Play or pause">
+          ▶
+        </button>
+        <span class="mini-time-text" id="mini-time-display">0:00 / 5:17</span>
+        <button id="mini-mute-btn" class="mini-control-btn" aria-label="Mute or unmute">
+          🔊
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MODALS -->
+  <div id="memory-lightbox-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Photo Lightbox">
+    <div class="lightbox-dialog">
+      <button class="modal-close-btn" id="lightbox-close-btn" aria-label="Close photo view">✕</button>
+      <button class="lightbox-nav-btn" id="lightbox-prev-btn" aria-label="Previous photo">‹</button>
+      <button class="lightbox-nav-btn" id="lightbox-next-btn" aria-label="Next photo">›</button>
+
+      <div class="lightbox-img-box">
+        <img id="lightbox-img" src="" alt="Full view memory" />
+      </div>
+      <div class="lightbox-info">
+        <h3 id="lightbox-caption">Caption</h3>
+        <span class="lightbox-date" id="lightbox-date">Date</span>
+        <p id="lightbox-story">Story details...</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="envelope-letter-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Letter Modal">
+    <div class="envelope-letter-dialog">
+      <button class="modal-close-btn" id="modal-envelope-close" aria-label="Close letter">✕</button>
+      <div class="env-modal-header">
+        <span class="env-tag" id="modal-envelope-tag">Gentle Hug</span>
+        <h3 id="modal-envelope-title">Open When You're Sad</h3>
+      </div>
+      <div class="env-letter-body" id="modal-envelope-letter"></div>
+    </div>
+  </div>
+
+  <div id="quiz2-complete-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Quiz 2 Complete">
+    <div class="achievement-dialog">
+      <div class="achievement-icon">💡❤️</div>
+      <h3>Apparently I know you pretty well ❤️</h3>
+      <p>
+        Every laugh, every preference, and every quirky habit—you are someone worth paying attention to. 
+        I'm lucky to know you so deeply!
+      </p>
+      <button class="glow-action-btn visible" onclick="document.getElementById('quiz2-complete-modal').classList.remove('visible')">
+        Aww, thank you! 🥹
+      </button>
+    </div>
+  </div>
+
+  <div id="secrets-all-unlocked-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="All secrets found">
+    <div class="achievement-dialog">
+      <div class="achievement-icon">🏆✨</div>
+      <h3>Master Detective Bestie!</h3>
+      <p>
+        You actually found all 6 hidden surprises! Your curiosity and attention to detail are unmatched. 
+        As your reward, consider this a lifetime coupon for unlimited snacks, free emotional support, and bad jokes! 💖
+      </p>
+      <button class="glow-action-btn visible" id="close-achievement-btn">
+        Claim My Crown 👑
+      </button>
+    </div>
+  </div>
+
+  <!-- SECRET CAT MODAL -->
+  <div id="secret-cat-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Secret Cat Discovered">
+    <div class="achievement-dialog cat-achievement">
+      <div class="achievement-icon">🐱💖</div>
+      <h3>YOU FOUND THE SECRET CAT 🐱</h3>
+      <p style="font-size: 1.25rem; color: var(--blush-300); font-family: var(--font-serif); margin: 1.2rem 0; line-height: 1.5;">
+        "Okay... here's another reminder that you're loved."
+      </p>
+      <button class="glow-action-btn visible" id="close-secret-cat-btn">
+        Purr-fect! 🐾❤️
+      </button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="particles.js"></script>
+  <script src="audio.js"></script>
+  <script src="games.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
